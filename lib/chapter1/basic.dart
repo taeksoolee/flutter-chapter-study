@@ -21,7 +21,7 @@ void variableType() {
   print(i.runtimeType); // int
 
   var d = .5;
-  print(d.runtimeType); // double 
+  print(d.runtimeType); // double
 
   var b = true;
   print(b.runtimeType); // bool
@@ -30,11 +30,12 @@ void variableType() {
   var str = 'string';
   print(str.runtimeType); // String
 
-  var arr = [1,2,3];
+  var arr = [1, 2, 3];
   print(arr.runtimeType); // List<int>
 
   Map<String, Map<String, List<double>>> m1 = {};
-  print(m1.runtimeType); // InternalLinkedHashMap<String, Map<String, List<double>>>
+  print(m1
+      .runtimeType); // InternalLinkedHashMap<String, Map<String, List<double>>>
   // Map은 인터페이스(?)
 
   var m2 = {};
@@ -72,7 +73,7 @@ void nullable() {
   print(s1);
 
 // ! : nullable 변수에서 null 이 아님을 확신한다.
-  String s2 = 'abc'; // 
+  String s2 = 'abc'; //
   print(s2!);
   // 아래경고 나오는 데 버전 차이인것 같다.
   // : Warning: Operand of null-aware operation '!' has type 'String' which excludes null.
@@ -97,8 +98,8 @@ void compareFinalAndConst() {
 }
 
 void operator() {
+  print('1. 산술 연산');
   int n = 2;
-// 산술 연산
   print(n);
   print(n + 2);
   print(n - 2);
@@ -110,10 +111,56 @@ void operator() {
   print(n--); // print(3) -> --(2)
   print(n); // 2
 
-// 대입 연산
+  print('2. 대입 연산');
+  double d1 = 4.0;
 
-// 비교 연산
-  
+  print(d1);
+
+  d1 += 1; // d = d + 1;
+  print(d1); // 5.0
+
+  d1 -= 1; // d = d - 1;
+  print(d1); // 4.0
+
+  d1 *= 2; // d = d * 2;
+  print(d1); // 8.0
+
+  d1 /= 2; // d = d * 2;
+  print(d1); // 4.0
+
+  double? d2 = null;
+  d2 ??= 3; // d = d == null ? 3 : d;
+  print(d2); // 3.0
+
+  print('3. 비교 연산 return bool');
+  int n1 = 1;
+  int n2 = 2;
+
+  // value
+  print(n1 > n2);
+  print(n1 < n2);
+  print(n1 >= n2);
+  print(n1 <= n2);
+  print(n1 == n2);
+  print(n1 != n2);
+
+  // type
+  print(n1 is int); // true
+  print(n1 is String); // false
+
+  print(n1 is! int); // false
+  print(n1 is! String); // true
+
+  print('4. logical');
+  bool r1 = 12 > 10 && 1 > 0; // true && true
+  print(r1); // true
+  bool r2 = 12 > 10 && 1 < 0; // true && false
+  print(r2); // false
+
+  bool r3 = 12 > 10 || 1 > 0; // true || true
+  print(r3); // true
+  bool r4 = 12 > 10 || 1 < 0; // true || false
+  print(r4); // true
 }
 
 void main() {
@@ -126,7 +173,7 @@ void main() {
    * nullable: null이 될수 있는 변수 (Type? name = 'val' 형식으로 선언)
    * non-nullable: null이 될수 없는 변수(default)
   */
-  // nullable(); 
+  // nullable();
 
   // compareFinalAndConst(); // buildtime의 값을 안다면 const 모른다면 final을 사용한다.
   operator();
