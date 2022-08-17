@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HelloWorldScreen extends StatelessWidget {
+class HelloworldScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

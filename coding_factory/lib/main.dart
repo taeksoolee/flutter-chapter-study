@@ -1,7 +1,7 @@
-import 'package:coding_factory/screens/SplashScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'package:coding_factory/screens/HelloWorldScreen.dart';
+import 'package:coding_factory/screens/helloworld_screen.dart';
+import 'package:coding_factory/screens/splash_screen.dart';
 
 void main(List<String> args) {
   runApp(MaterialApp(
