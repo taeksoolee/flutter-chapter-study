@@ -46,7 +46,6 @@ void main(List<String> args) {
 
 ## Widget Tree
 
-
 # Splash Image
 ## asset 설정
 1. `/asset/*` 디렉토리에 미디어(이미지 등) 파일을 저장한다.
@@ -64,5 +63,12 @@ flutter:
 ``` shell
 flutter pub get
 ```
+4. Widget 사용예시
+```dart
+Image.asset('asset/img/logo.png')
+```
 ## Hotreload
 -  `build` 함수 변경을 감지한다.
+
+
+# Row & Column Widget
