@@ -111,3 +111,63 @@ import 'package:[package_name]/to/path/[file.dart]'
 - Row, Column 위젯의 children으로만 사용 가능하다.
 - Expended Widget과 다르게 child의 가로 또는 세로를 늘리지 않는다. 
 - 공간은 차지하지만 남는 비율을 버린다.
+
+# WebView
+## ❄️ VebView
+- javascriptMode
+  - JavascriptMode.unrestricted : javascript를 사용한다.
+- initialUrl: 최조 url 설정
+- webViewCreated : 윕뷰 생성할때 실행되는 콜백 함수
+- onWebViewCreated: (WebviewController controller)
+  - controller.loadUrl(url)
+
+## ❄️ AppBar
+- backgroundColor
+- title
+- centerTitle
+- actions: ButtonIcon(icons: Icon(Icons.*), onPressed: () {})
+
+## pub.dev (외부 패키지 사용)
+- [pub.dev](https://pub.dev/)
+```
+# pubspec.yaml
+dependencies:
+  webview_flutter: ^3.0.0 # ^ : minor, fetch 버전만 업데이트 한다.
+```
+- build error `PlatformException` 발생시 앱 종료후 `flutter clean` 명령 실행
+
+
+## http 프로토콜 사용하고 싶을때 (기본 사용 불가)
+### iOS
+- ios/Runner/info.plist
+```xml
+<!-- ... -->
+</dict>
+  <!-- ... -->
+  <!-- http enable 설정 -->
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsLocalNetworking</key>
+    <true />
+    <key>NSAllowsArbirtraryLoadsInWebContent</key>
+    <true />
+  </dict>
+</dict>
+<!-- ... -->
+```
+### Android
+- android/app/src/main/AndroidManifest.xml
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.coding_factory">
+    <!-- 인터넷 사용 권한 추가 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+     ... 
+     android:usesCleartextTraffix="true">
+    <!-- ... -->
+</manifest>
+```
+
+
+
