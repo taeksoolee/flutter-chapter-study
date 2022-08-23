@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ImageCarouselScreen extends StatefulWidget {
   const ImageCarouselScreen({ Key? key }) : super(key: key);
@@ -19,6 +20,8 @@ class _ImageCarouselScreenState extends State<ImageCarouselScreen> {
 
   @override
   void initState() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light); // 노치부분 상단 데이터에 대한 스타일을 수정한다.
+
     super.initState();
 
     timer = Timer.periodic(Duration(seconds: 1), (timer) { 
