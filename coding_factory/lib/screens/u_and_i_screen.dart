@@ -10,6 +10,12 @@ class UAndIScreen extends StatefulWidget {
 }
 
 class _UAndIScreenState extends State<UAndIScreen> {
+  DateTime selectedDate = DateTime(
+    DateTime.now().year, 
+    DateTime.now().month, 
+    DateTime.now().day
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +26,10 @@ class _UAndIScreenState extends State<UAndIScreen> {
           width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
-              _TopPart(),
+              _TopPart(
+                selectedDate: selectedDate,
+                onPressed: onHeartPressed
+              ),
               _BottomPart()
             ],
           ),
@@ -28,26 +37,47 @@ class _UAndIScreenState extends State<UAndIScreen> {
       ),
     );
   }
+
+  void onHeartPressed() {
+    final now = DateTime.now();
+
+    showCupertinoDialog(
+      context: context, 
+      barrierDismissible: true, // 외부 클릭시 종료 기능을 활성화한다.
+      builder: (BuildContext context) {
+        return Align( // 정렬 기준이 없으면 전체를 차지하게된다.
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            color: Colors.white,
+            height: 300.0,
+            child: CupertinoDatePicker(
+              mode: CupertinoDatePickerMode.date,
+              initialDateTime: selectedDate,
+              maximumDate: DateTime(
+                now.year, now.month, now.day
+              ),
+              onDateTimeChanged: (DateTime date) {
+                setState(() {
+                  selectedDate = date;
+                });
+              },
+            ),
+          ),
+        );
+      }
+    );
+  }
 }
 
-class _TopPart extends StatefulWidget {
-  const _TopPart({ Key? key }) : super(key: key);
 
-  @override
-  State<_TopPart> createState() => _TopPartState();
-}
+class _TopPart extends StatelessWidget {
+  final DateTime selectedDate;
+  final VoidCallback onPressed;
 
-class _TopPartState extends State<_TopPart> {
-  DateTime selectedDate = DateTime(
-    DateTime.now().year, 
-    DateTime.now().month, 
-    DateTime.now().day
-  );
+  const _TopPart({required this.selectedDate, required this.onPressed, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final now = DateTime.now();
-
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -64,41 +94,14 @@ class _TopPartState extends State<_TopPart> {
           ),
           IconButton(
             iconSize: 60.0,
-            onPressed: () {
-              // dialog
-              showCupertinoDialog(
-                context: context, 
-                barrierDismissible: true, // 외부 클릭시 종료 기능을 활성화한다.
-                builder: (BuildContext context) {
-                  return Align( // 정렬 기준이 없으면 전체를 차지하게된다.
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      color: Colors.white,
-                      height: 300.0,
-                      child: CupertinoDatePicker(
-                        mode: CupertinoDatePickerMode.date,
-                        initialDateTime: selectedDate,
-                        maximumDate: DateTime(
-                          now.year, now.month, now.day
-                        ),
-                        onDateTimeChanged: (DateTime date) {
-                          setState(() {
-                            selectedDate = date;
-                          });
-                        },
-                      ),
-                    ),
-                  );
-                }
-              );
-            }, 
+            onPressed: onPressed,
             icon: Icon(Icons.favorite, color: Colors.red[300])
           ),
           Text('D-${
               DateTime(
-                now.year, 
-                now.month, 
-                now.day
+                DateTime.now().year, 
+                DateTime.now().month, 
+                DateTime.now().day
               ).difference(selectedDate).inDays + 1
             }',
             style: TextStyle(color: Colors.white, fontFamily: 'sunflower', fontSize: 50.0, fontWeight: FontWeight.w700))
