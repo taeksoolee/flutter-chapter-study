@@ -57,6 +57,21 @@ flutter:
     # - asset/img/logo.png
     - asset/img/ # asset/img의 모든 파일을 사용
     - asset/image_carousel/img/
+    - asset/u_and_i/img/
+
+  fonts:
+    - family: parisienne
+      fonts:
+        - asset: asset/u_and_i/fonts/Parisienne-Regular.ttf # default wegith: 400
+
+    - family: sunflower
+      fonts:
+        - asset: asset/u_and_i/fonts/Sunflower-Light.ttf
+          weight: 100
+        - asset: asset/u_and_i/fonts/Sunflower-Medium.ttf
+          weight: 200
+        - asset: asset/u_and_i/fonts/Sunflower-Bold.ttf
+          weight: 300
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
