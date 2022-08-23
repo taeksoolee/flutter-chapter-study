@@ -121,7 +121,7 @@ void parseClassToMap() {
 		{ 'id': '2', 'name': 'park' },
 	];
 
-  final parsedPeoples = peoples.map((x) => Value(id: x['id']!, name: x['name']!)).toList();
+  final parsedPeoples = peoples.map((x) => Value(id: x['id'], name: x['name'])).toList();
 
   for(Value p in parsedPeoples) {
     print(p);

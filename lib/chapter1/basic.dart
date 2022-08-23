@@ -68,13 +68,13 @@ void template() {
 void nullable() {
 // ? : nullable로 변수 선언
   // String s1 = null; // error!
-  String? s1 = null;
+  String s1 = null;
 
   print(s1);
 
 // ! : nullable 변수에서 null 이 아님을 확신한다.
   String s2 = 'abc'; //
-  print(s2!);
+  print(s2);
   // 아래경고 나오는 데 버전 차이인것 같다.
   // : Warning: Operand of null-aware operation '!' has type 'String' which excludes null.
 }
@@ -128,7 +128,7 @@ void operator() {
   d1 /= 2; // d = d * 2;
   print(d1); // 4.0
 
-  double? d2 = null;
+  double d2 = null;
   d2 ??= 3; // d = d == null ? 3 : d;
   print(d2); // 3.0
 

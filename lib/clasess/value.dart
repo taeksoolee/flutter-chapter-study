@@ -3,8 +3,8 @@ class Value {
   final String name;
 
   Value({
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
   });
 
   @override
