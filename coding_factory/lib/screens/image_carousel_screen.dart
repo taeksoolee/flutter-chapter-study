@@ -8,16 +8,16 @@ class ImageCarouselScreen extends StatefulWidget {
 }
 
 class _ImageCarouselScreenState extends State<ImageCarouselScreen> {
+  List<int> sequence = [1,2,3,4];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        children: [
-          Image.asset('asset/image_carousel/image_1.jpeg', fit: BoxFit.cover),
-          Image.asset('asset/image_carousel/image_2.jpeg', fit: BoxFit.cover),
-          Image.asset('asset/image_carousel/image_3.jpeg', fit: BoxFit.cover),
-          Image.asset('asset/image_carousel/image_4.jpeg', fit: BoxFit.cover),
-        ],
+        children: sequence
+          .map((e) => 
+            Image.asset('asset/image_carousel/image_$e.jpeg', fit: BoxFit.cover)
+          ).toList(),
       ),
     );
   }
