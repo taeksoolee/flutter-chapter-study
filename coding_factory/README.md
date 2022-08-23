@@ -191,3 +191,6 @@ dependencies:
     1. State: setState -> `dirty`
     2. State: build -> `clean`
 
+## feature/image_carousel
+### ❄️ PageView: 터치로 좌우 이동 가능한 View
+### Timer : 특정기간마다 지정함수 실행

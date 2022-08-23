@@ -5,6 +5,7 @@ import 'package:coding_factory/screens/helloworld_screen.dart';
 import 'package:coding_factory/screens/splash_screen.dart';
 import 'package:coding_factory/screens/row_and_column_screen.dart';
 import 'package:coding_factory/screens/webview_screen.dart';
+import 'package:coding_factory/screens/image_carousel_screen.dart';
 
 void main(List<String> args) {
   runApp(MaterialApp(
@@ -13,6 +14,7 @@ void main(List<String> args) {
     // home: SplashScreen(),
     // home: RowAndColumnScreen(),
     // home: WebViewScreen(),
-    home: LifeCycleScreen(),
+    // home: LifeCycleScreen(),
+    home: ImageCarouselScreen(),
   ));
 }
