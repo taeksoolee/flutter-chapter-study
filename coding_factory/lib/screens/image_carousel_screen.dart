@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class ImageCarouselScreen extends StatefulWidget {
@@ -9,6 +11,26 @@ class ImageCarouselScreen extends StatefulWidget {
 
 class _ImageCarouselScreenState extends State<ImageCarouselScreen> {
   List<int> sequence = [1,2,3,4];
+
+  Timer? timer;
+
+  @override
+  void initState() {
+    super.initState();
+
+    timer = Timer.periodic(Duration(seconds: 1), (timer) { 
+      print('timer!');
+    });
+  }
+
+  @override
+  void dispose() {
+    if(timer != null) {
+      timer!.cancel();
+    }
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
