@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UAndIScreen extends StatefulWidget {
@@ -50,7 +51,26 @@ class _TopPart extends StatelessWidget {
           IconButton(
             iconSize: 60.0,
             onPressed: () {
-    
+              // dialog
+              showCupertinoDialog(
+                context: context, 
+                barrierDismissible: true, // 외부 클릭시 종료 기능을 활성화한다.
+                builder: (BuildContext context) {
+                  return Align( // 정렬 기준이 없으면 전체를 차지하게된다.
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      color: Colors.white,
+                      height: 300.0,
+                      child: CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.date,
+                        onDateTimeChanged: (DateTime date) {
+                          print(date);
+                        },
+                      ),
+                    ),
+                  );
+                }
+              );
             }, 
             icon: Icon(Icons.favorite, color: Colors.red[300])
           ),
