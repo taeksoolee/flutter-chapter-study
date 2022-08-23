@@ -1,3 +1,4 @@
+import 'package:coding_factory/screens/life_cycle_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:coding_factory/screens/helloworld_screen.dart';
@@ -11,6 +12,7 @@ void main(List<String> args) {
     // home: HelloWorldScreen(),
     // home: SplashScreen(),
     // home: RowAndColumnScreen(),
-    home: WebViewScreen()
+    // home: WebViewScreen(),
+    home: LifeCycleScreen(),
   ));
 }
