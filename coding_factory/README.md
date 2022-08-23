@@ -67,7 +67,7 @@ flutter pub get
 4. ❄️ Image Widget
 - Widget 사용예시
 ```dart
-Image.asset('asset/img/logo.png')
+Image.asset('asset/img/logo.png', fit: BoxFix.cover)
 ```
 ## Hotreload
 -  `build` 함수 변경을 감지한다.
@@ -192,5 +192,59 @@ dependencies:
     2. State: build -> `clean`
 
 ## feature/image_carousel
-### ❄️ PageView: 터치로 좌우 이동 가능한 View
-### Timer : 특정기간마다 지정함수 실행
+### ❄️ PageView Widget
+- 터치로 좌우 이동 가능한 View
+- children: 여러 PageView를 list로 설정
+### Timer
+- 특정기간마다 지정함수 실행하는 기능을 제공한다. (javascript setInterval 과 비슷)
+- 사용방법 (with statefulWidget)
+  1. Timer 필드를 생성 한다.
+  ``` dart
+  Timer? timer
+  ```
+  2. initState 메서드에서 Timer 초기화한다.
+  ``` dart
+  timer = Timer.periodic(
+    Duration(seconds: 1),
+    (timer) {
+      print('1초에 한번 실행된다.');
+    }
+  );
+  ```
+  3. dispose 메서드에서 Timer 삭제해준다.
+  ``` dart
+  if(timer != null) {
+    timer!.cancel();
+  }
+  ```
+### PageController
+  - PageView Widget을 컨트롤하는 컨트롤러를 제공한다.
+  - 사용방법
+  1. PageController를 필드로 생성한다.
+  ``` dart
+  PageController controller = PageController(
+    initialPage: 0,
+  )
+  ```
+  2. PageView Widget에 controller를 설정한다.
+  ``` dart
+  PageView(
+    controller: controller,
+    // ...
+  )
+  ```
+  3. class 내부에서 PageController를 필요한 부분에 사용한다.
+  ``` dart
+  // 사용 예시
+  int currentPage = controller.page!.toInt(); // page filed는 dobule이다.
+  // ...Some Logic
+  controll.animateToPage(
+    somePage, // int 
+    duration: Duration(milliseconds: 800), 
+    curve: Curves.linear, // linear : 일정한 간격으로
+  )
+  ```
+  4. dispose 메서드에서  controller를 dispose 한다.
+  ``` dart
+  controller.dispose();
+  ```
