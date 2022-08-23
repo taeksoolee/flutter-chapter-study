@@ -78,18 +78,18 @@ class _TopPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final themeText = theme.textTheme;
+
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('U & I', 
-            style: TextStyle(color: Colors.white, fontFamily: 'parisienne', fontSize: 80.0)),
+          Text('U & I', style: themeText.headline1),
           Column(
             children: [
-              Text('우리 처음 만난날', 
-                style: TextStyle(color: Colors.white, fontFamily: 'sunflower', fontSize: 30.0)),
-              Text(DateFormat('yyyy. MM. dd').format(selectedDate),
-                style: TextStyle(color: Colors.white, fontFamily: 'sunflower', fontSize: 20.0)),
+              Text('우리 처음 만난날', style: themeText.bodyText1),
+              Text(DateFormat('yyyy. MM. dd').format(selectedDate), style: themeText.bodyText2)
             ],
           ),
           IconButton(
@@ -104,7 +104,8 @@ class _TopPart extends StatelessWidget {
                 DateTime.now().day
               ).difference(selectedDate).inDays + 1
             }',
-            style: TextStyle(color: Colors.white, fontFamily: 'sunflower', fontSize: 50.0, fontWeight: FontWeight.w700))
+            style: themeText.headline2,
+          ),
         ],
       ),
     );
