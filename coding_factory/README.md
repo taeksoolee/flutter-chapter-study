@@ -164,10 +164,30 @@ dependencies:
     <uses-permission android:name="android.permission.INTERNET" />
     <application
      ... 
-     android:usesCleartextTraffix="true">
+     android:usesCleartextTraffic="true">
     <!-- ... -->
 </manifest>
 ```
 
 
+## StatefulWidget
+- 모든 위젯은 불변하다. 변경될 경우 새로운 위젯을 그린다.
+- StatelessWidget 생명주기
+  - constructor가 생성되고 곧바로 build(1회 실해) 함수가 실행된다.
+- StatefulWidget 생명주기
+  1. StatefulWidget: constructor
+  2. StatefulWidget: createState
+  3. State: initState(1회 실행)
+  4. State: didChangeDependencies -> `dirty`
+  5. State: build -> `clean`
+  - 위젯이 삭제될 경우
+    1. State: deactivate
+    2. State: despose
+  - 파라미터가 변경될 경우
+    1. StatefulWidget: constructor (재 생성)
+    2. State: didUpdateWidget -> `dirty`
+    3. State: build -> `clean`
+  - State가 변경될 경우
+    1. State: setState -> `dirty`
+    2. State: build -> `clean`
 
