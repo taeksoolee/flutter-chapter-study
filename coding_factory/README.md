@@ -191,7 +191,7 @@ dependencies:
     1. State: setState -> `dirty`
     2. State: build -> `clean`
 
-## feature/image_carousel
+## 🚀 feature/image_carousel
 ### ❄️ PageView Widget
 - 터치로 좌우 이동 가능한 View
 - children: 여러 PageView를 list로 설정
@@ -248,3 +248,69 @@ dependencies:
   ``` dart
   controller.dispose();
   ```
+## 🚀 feature/u_and_i
+### flutter font setting
+- 사용방법
+1. font 파일을 다운로드하여 프로젝트에 위치한다.
+2. pubspec.yaml 파일 font를 추가한다.
+``` yaml
+fonts:
+  - family: parisienne # 임의의 이름으로 정의 한다.
+    fonts:
+      - asset: asset/u_and_i/fonts/Parisienne-Regular.ttf # default wegith: 400
+
+  - family: sunflower
+    fonts:
+      - asset: asset/u_and_i/fonts/Sunflower-Light.ttf
+        weight: 100 # Text('Test', fontFamliy: 'sunflower', fontWeight: 100)
+      - asset: asset/u_and_i/fonts/Sunflower-Medium.ttf
+        weight: 200
+      - asset: asset/u_and_i/fonts/Sunflower-Bold.ttf
+        weight: 300
+```
+3. Text Widget 등에서 사용한다.
+``` dart
+Text('Test', fontFamliy: 'sunflower', fontWeight: 100)
+```
+
+### Theme 적용
+- 사용방법
+1. MaterialApp 위젯을 호출할때 theme 값을 지정한다.
+``` dart
+MaterialApp(
+  theme: ThemeData(
+    fontFamily: 'sunflower', // 전역 fontFaily
+    textTheme: TextTheme( // textTheme
+      headline1: TextStyle(color: Colors.white, fontFamily: 'parisienne', fontSize: 80.0),
+      headline2: TextStyle(color: Colors.white, fontSize: 50.0, fontWeight: FontWeight.w700),
+      bodyText1: TextStyle(color: Colors.white, fontSize: 30.0),
+      bodyText2: TextStyle(color: Colors.white, fontSize: 20.0),
+    )
+  ),
+  // ...
+)
+```
+2. build 함수 내에서 theme instance를 가져온다.
+``` dart
+final theme = Theme.of(context);
+final textTheme = theme.textTheme;
+```
+3. Widget에 theme instance를 사용한다.
+``` dart
+Text('test1', style: textTheme.headline1) // global fontFamily: sunflower
+```
+
+### Dialog 생성
+- showCupertinoDialog: iOS UI Dialog
+``` dart
+import 'package:flutter/cupertino.dart';
+
+// 핸들러에서 다음과 같이 정의한다.
+showCupertinoDialog(
+  context: context, 
+  barrierDismissible: true, // 외부 클릭시 종료 기능을 활성화한다.
+  // build함수를 정의한다.
+  builder: (buildContext context) {
+    return Container(); 
+  }
+```
