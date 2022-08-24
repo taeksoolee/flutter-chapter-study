@@ -58,7 +58,7 @@ class _ImageCarouselScreenState extends State<ImageCarouselScreen> {
         controller: controller,
         children: sequence
           .map((e) => 
-            Image.asset('asset/image_carousel/image_$e.jpeg', fit: BoxFit.cover)
+            Image.asset('asset/image_carousel/img/image_$e.jpeg', fit: BoxFit.cover)
           ).toList(),
       ),
     );
