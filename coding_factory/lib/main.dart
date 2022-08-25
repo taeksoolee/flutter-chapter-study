@@ -14,6 +14,12 @@ import 'package:intl/intl.dart';
 
 void main(List<String> argdifferences) {
   runApp(MaterialApp(
+    localizationsDelegates: [
+      GlobalMaterialLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate
+    ],
+    supportedLocales: [const Locale('en', 'US'), const Locale('ko', '')],
     // theme: ThemeData(
     //     fontFamily: 'sunflower',
     //     textTheme: TextTheme(
@@ -31,7 +37,7 @@ void main(List<String> argdifferences) {
     // home: WebViewScreen(),
     // home: LifeCycleScreen(),
     // home: ImageCarouselScreen(),
-    // home: UAndIScreen(),
-    home: ConstTestScreen(),
+    home: UAndIScreen(),
+    // home: ConstTestScreen(),
   ));
 }
