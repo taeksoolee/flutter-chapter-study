@@ -1,3 +1,4 @@
+import 'package:coding_factory/screens/const_test_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:coding_factory/screens/helloworld_screen.dart';
@@ -8,17 +9,21 @@ import 'package:coding_factory/screens/life_cycle_screen.dart';
 import 'package:coding_factory/screens/image_carousel_screen.dart';
 import 'package:coding_factory/screens/u_and_i_screen.dart';
 
-void main(List<String> args) {
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
+
+void main(List<String> argdifferences) {
   runApp(MaterialApp(
-    theme: ThemeData(
-      fontFamily: 'sunflower',
-      textTheme: TextTheme(
-        headline1: TextStyle(color: Colors.white, fontFamily: 'parisienne', fontSize: 80.0),
-        headline2: TextStyle(color: Colors.white, fontSize: 50.0, fontWeight: FontWeight.w700),
-        bodyText1: TextStyle(color: Colors.white, fontSize: 30.0),
-        bodyText2: TextStyle(color: Colors.white, fontSize: 20.0),
-      )
-    ),
+    // theme: ThemeData(
+    //     fontFamily: 'sunflower',
+    //     textTheme: TextTheme(
+    //       headline1: TextStyle(
+    //           color: Colors.white, fontFamily: 'parisienne', fontSize: 80.0),
+    //       headline2: TextStyle(
+    //           color: Colors.white, fontSize: 50.0, fontWeight: FontWeight.w700),
+    //       bodyText1: TextStyle(color: Colors.white, fontSize: 30.0),
+    //       bodyText2: TextStyle(color: Colors.white, fontSize: 20.0),
+    //     )),
     // debugShowCheckedModeBanner: false, // debug 모드
     // home: HelloWorldScreen(),
     // home: SplashScreen(),
@@ -26,6 +31,7 @@ void main(List<String> args) {
     // home: WebViewScreen(),
     // home: LifeCycleScreen(),
     // home: ImageCarouselScreen(),
-    home: UAndIScreen(),
+    // home: UAndIScreen(),
+    home: ConstTestScreen(),
   ));
 }
