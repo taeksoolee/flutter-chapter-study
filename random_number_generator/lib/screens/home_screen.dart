@@ -15,6 +15,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<int> randomNumbers = [
+    123,
+    456,
+    213432,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,16 +52,14 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      123,
-                      456,
-                      213432,
-                    ]
+                    children: randomNumbers
+                        .asMap()
+                        .entries
                         .map((e) => Padding(
                               padding:
-                                  const EdgeInsets.symmetric(vertical: 10.0),
+                                  EdgeInsets.only(top: e.key == 0 ? 0.0 : 16.0),
                               child: Row(
-                                children: e
+                                children: e.value
                                     .toString()
                                     .split('')
                                     .map((e) => Image.asset(
