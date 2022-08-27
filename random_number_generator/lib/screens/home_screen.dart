@@ -45,13 +45,28 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('123'),
-                    Text('456'),
-                    Text('789'),
-                  ],
-                ),
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      123,
+                      456,
+                      213432,
+                    ]
+                        .map((e) => Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 10.0),
+                              child: Row(
+                                children: e
+                                    .toString()
+                                    .split('')
+                                    .map((e) => Image.asset(
+                                          'assets/img/$e.png',
+                                          width: 45.0,
+                                          height: 50.0,
+                                        ))
+                                    .toList(),
+                              ),
+                            ))
+                        .toList()),
               ),
               SizedBox(
                 width: double.infinity,
