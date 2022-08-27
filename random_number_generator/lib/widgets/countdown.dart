@@ -17,7 +17,7 @@ class _CountdownState extends State<Countdown> {
 
   @override
   void initState() {
-    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         if (count == 9) {
           count = 0;

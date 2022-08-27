@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:random_number_generator/constant/color.dart';
 import 'package:random_number_generator/screens/settings_screen.dart';
 import 'package:random_number_generator/widgets/countdown.dart';
+import 'package:random_number_generator/widgets/number_row.dart';
 
 // 하남 배달특급 친구
 class HomeScreen extends StatefulWidget {
@@ -86,9 +87,9 @@ class _Header extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
+        const Text(
           'Random Nums Generator',
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white,
             fontSize: 20.0,
             fontWeight: FontWeight.w700,
@@ -117,16 +118,8 @@ class _Body extends StatelessWidget {
               .entries
               .map((e) => Padding(
                     padding: EdgeInsets.only(top: e.key == 0 ? 0.0 : 16.0),
-                    child: Row(
-                      children: e.value
-                          .toString()
-                          .split('')
-                          .map((e) => Image.asset(
-                                'assets/img/$e.png',
-                                width: 45.0,
-                                height: 50.0,
-                              ))
-                          .toList(),
+                    child: NumberRow(
+                      number: e.value,
                     ),
                   ))
               .toList()),
