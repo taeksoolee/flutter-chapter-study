@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:random_number_generator/constant/color.dart';
+import 'package:random_number_generator/screens/settings_screen.dart';
 import 'package:random_number_generator/widgets/countdown.dart';
 
 // 하남 배달특급 친구
@@ -76,7 +77,12 @@ class _Header extends StatelessWidget {
           ),
         ),
         IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return SettingScreen();
+              }));
+            },
             icon: Icon(Icons.settings, color: ThemeColors.redColor))
       ],
     );
